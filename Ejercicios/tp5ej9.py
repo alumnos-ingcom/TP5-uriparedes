@@ -6,7 +6,7 @@ from tp5ej1 import ingresarEntero
 
 def factorion(limite):
     factoriones = []
-    for n in range(limite):
+    for n in range(1,limite+1):
         nFactorial = 0
         for numero in str(n):
             nFactorial += factorial(int(numero))
