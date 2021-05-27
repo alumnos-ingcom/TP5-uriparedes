@@ -30,7 +30,7 @@ def conversionBinarioInverso(numero):
     binario = ""
     potencia = 0
     limit = limite(numero) # calcula cual es el numero mas grande que pueda tener el nro binario
-    for posicion in range(limit , -1, -1): # comienza la conversion a binario desde el numero mas grande hasta 0
+    for posicion in reversed(range(limit + 1)): # comienza la conversion a binario desde el numero mas grande hasta 0
         potencia = 2**posicion # Un numero binario es igual a 2^n, siendo n la posicion del numero
         if numero >= potencia: # Si la variable potencia es menor o igual al numero ingresado, realiza la resta y agrega 1 al nro binario
             numero -= potencia
@@ -43,7 +43,7 @@ def conversionDecimalInverso(binario):
     """Recibe un string con un numero binario y devuelve un numero entero que lo representa"""
     decimal = 0
     contador = 0
-    for posicion in range(len(binario)-1, -1, -1):
+    for posicion in reversed(range(len(binario))):
         if(binario[contador] == "1"):
             decimal += 2**posicion
         contador += 1
@@ -77,7 +77,6 @@ def prueba():
     print(f"El numero {numero}, convertido a binario (mayor a menor) es {binario}")
     numero = conversionDecimalInverso(binario)
     print(f"El numero binario {binario}, convertido a decimal es {numero}")
-    pass
 
 if __name__ == "__main__":
     prueba()
