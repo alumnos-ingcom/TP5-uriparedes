@@ -11,25 +11,23 @@ def rotX(texto, distancia):
         char = ord(i)
         char += distancia
         if distancia > 0:
-            print("Es mayor a 0")
-            if(char-distancia >= ord("a") and char-distancia <= ord("z")):
+            if((char - distancia) >= ord("a") and (char - distancia) <= ord("z")):
                 while char > ord("z"): #en caso de que tenga que dar mas de 1 "vuelta" al cifrado
                     char -= 26
-            elif(char-distancia >= ord("A") and char-distancia <= ord("Z")):
+            elif((char - distancia) >= ord("A") and (char - distancia) <= ord("Z")):
                 while char > ord("Z"): #en caso de que tenga que dar mas de 1 "vuelta" al cifrado
                     char -= 26
-            elif(char-distancia >= ord("0") and char-distancia <= ord ("9")):
+            elif((char - distancia) >= ord("0") and (char - distancia) <= ord ("9")):
                 while char > ord("9"): #en caso de que tenga que dar mas de 1 "vuelta" al cifrado
                     char -= 10
         elif distancia < 0:
-            print("Es menor a 0")
-            if(char-distancia >= ord("a") and char+distancia <= ord("z")):
+            if((char - distancia) >= ord("a") and (char - distancia) <= ord("z")):
                 while char < ord("a"): #en caso de que tenga que dar mas de 1 "vuelta" al cifrado
                     char += 26
-            elif(char-distancia >= ord("A") and char+distancia <= ord("Z")):
+            elif((char - distancia) >= ord("A") and (char - distancia) <= ord("Z")):
                 while char < ord("A"): #en caso de que tenga que dar mas de 1 "vuelta" al cifrado
                     char += 26
-            elif(char-distancia >= ord("0") and char+distancia <= ord ("9")):
+            elif((char - distancia) >= ord("0") and (char - distancia) <= ord ("9")):
                 while char < ord("0"): #en caso de que tenga que dar mas de 1 "vuelta" al cifrado
                     char += 10
         else:
@@ -38,32 +36,31 @@ def rotX(texto, distancia):
     return codificado
 
 def deRotX(texto, distancia):
-    distancia = -distancia
+    """Toma el texto cifrado y lo descifra"""
     codificado = ""
     for i in texto:
         char = ord(i)
-        char += distancia
+        char -= distancia
         if distancia > 0:
-            if(char-distancia >= ord("a") and char-distancia <= ord("z")):
-                while char > ord("z"): #en caso de que tenga que dar mas de 1 "vuelta" al cifrado
-                    char -= 26
-            elif(char-distancia >= ord("A") and char-distancia <= ord("Z")):
-                while char > ord("Z"): #en caso de que tenga que dar mas de 1 "vuelta" al cifrado
-                    char -= 26
-            elif(char-distancia >= ord("0") and char-distancia <= ord ("9")):
-                while char > ord("9"): #en caso de que tenga que dar mas de 1 "vuelta" al cifrado
-                    char -= 10
-        elif distancia < 0:
-            print("Es menor a 0")
-            if(char-distancia >= ord("a") and char+distancia <= ord("z")):
+            if((char + distancia) >= ord("a") and (char + distancia) <= ord("z")):
                 while char < ord("a"): #en caso de que tenga que dar mas de 1 "vuelta" al cifrado
                     char += 26
-            elif(char-distancia >= ord("A") and char+distancia <= ord("Z")):
+            elif((char + distancia) >= ord("A") and (char + distancia) <= ord("Z")):
                 while char < ord("A"): #en caso de que tenga que dar mas de 1 "vuelta" al cifrado
                     char += 26
-            elif(char-distancia >= ord("0") and char+distancia <= ord ("9")):
+            elif((char + distancia) >= ord("0") and (char + distancia) <= ord ("9")):
                 while char < ord("0"): #en caso de que tenga que dar mas de 1 "vuelta" al cifrado
                     char += 10
+        elif distancia < 0:
+            if((char + distancia) >= ord("a") and (char + distancia) <= ord("z")):
+                while char > ord("z"): #en caso de que tenga que dar mas de 1 "vuelta" al cifrado
+                    char -= 26
+            elif((char + distancia) >= ord("A") and (char + distancia) <= ord("Z")):
+                while char > ord("Z"): #en caso de que tenga que dar mas de 1 "vuelta" al cifrado
+                    char -= 26
+            elif((char + distancia) >= ord("0") and (char + distancia) <= ord ("9")):
+                while char > ord("9"): #en caso de que tenga que dar mas de 1 "vuelta" al cifrado
+                    char -= 10
         else:
             return texto
         codificado += chr(char)
